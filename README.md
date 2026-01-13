@@ -97,3 +97,4 @@ For development, both applications should be running simultaneously:
 
 The frontend expects the backend API to be available at `/api` relative to the frontend URL, which is configured in the `.env.local` file. 
 "# todo-app-phase-2" 
+"# todo-app-phase-2" 

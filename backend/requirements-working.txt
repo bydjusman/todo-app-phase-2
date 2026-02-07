@@ -1,0 +1,22 @@
+# Requirements for AI-Powered Todo Chatbot with MCP - Working Versions
+fastapi==0.128.0
+uvicorn==0.40.0
+openai==1.3.5
+pydantic==2.12.5
+pydantic_core==2.41.5
+sqlmodel==0.0.31
+psycopg2-binary==2.9.10
+better-auth==0.0.1-beta.16
+python-jose[cryptography]==3.5.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.3.0
+python-multipart==0.0.6
+httpx==0.25.2
+mcp==1.0.0
+SQLAlchemy==2.0.45
+anyio==4.12.1
+starlette==0.50.0
+typing-extensions==4.15.0
+
+# Testing
+pytest==7.4.3

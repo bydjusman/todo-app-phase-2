@@ -8,13 +8,6 @@ description: "Task list template for feature implementation"
 **Input**: Design documents from `/specs/[###-feature-name]/`
 **Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
 
-**Constitution Compliance**: These tasks must comply with the Evolution of Todo Constitution which mandates:
-- Spec-Driven Development: All work follows Constitution → Specifications → Plan → Tasks → Implementation
-- Agent Behavior Rules: No manual coding by humans, no feature invention beyond specs
-- Phase Governance: Strict adherence to phase specifications without cross-phase feature leakage
-- Technology Stack Compliance: Python, FastAPI, SQLModel, Neon DB, Next.js, OpenAI Agents SDK, MCP
-- Quality and Architecture Standards: Clean architecture, stateless services, separation of concerns
-
 **Tests**: The examples below include test tasks. Tests are OPTIONAL - only include them if explicitly requested in the feature specification.
 
 **Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.

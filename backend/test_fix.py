@@ -25,8 +25,8 @@ print(f"\nCreated test token using create_access_token function: {token}")
 result = verify_token(token)
 print(f"Verified token result: {result}")
 if result:
-    print(f"User ID from token: {result.user_id}")
-    print(f"Type of user_id: {type(result.user_id)}")
+    print(f"User ID from token: {result['sub']}")
+    print(f"Type of user_id: {type(result['sub'])}")
 else:
     print("Token verification failed")
 

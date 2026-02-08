@@ -6,7 +6,7 @@ from jose import JWTError, jwt
 
 from config import settings
 from models.database import get_db
-from src.models import User
+from models import User
 from schemas.auth import TokenData
 from utils.security import decode_token
 

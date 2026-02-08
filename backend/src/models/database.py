@@ -3,19 +3,28 @@ from sqlalchemy.sql import func
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship,registry
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
+from sqlalchemy.pool import StaticPool
 import uuid
 
 from config import settings
 
 # Create async engine with SSL configuration
-async_engine = create_async_engine(
-    settings.async_database_url,
-    echo=settings.debug,
-    pool_pre_ping=True,
-    pool_size=5,
-    max_overflow=10,
-    connect_args={"ssl": "require"},
-)
+if "postgresql" in settings.async_database_url:
+    async_engine = create_async_engine(
+        settings.async_database_url,
+        echo=settings.debug,
+        pool_pre_ping=True,
+        pool_size=5,
+        max_overflow=10,
+        connect_args={"ssl": "require"},
+    )
+else:
+    async_engine = create_async_engine(
+        settings.async_database_url,
+        echo=settings.debug,
+        connect_args={"check_same_thread": False},
+        poolclass=StaticPool,
+    )
 
 # Create async session factory
 async_session_local = async_sessionmaker(

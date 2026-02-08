@@ -1,3 +1,5 @@
+pytest_plugins = ("pytest_asyncio",)
+
 """Configuration for pytest fixtures and test setup."""
 import asyncio
 import os
@@ -7,6 +9,9 @@ from typing import AsyncGenerator
 from httpx import AsyncClient, ASGITransport
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 from sqlalchemy.pool import StaticPool
+
+# Set the database url to a test database before importing the app
+os.environ["DATABASE_URL"] = "sqlite+aiosqlite:///:memory:"
 
 # Change to src directory for imports
 os.chdir(os.path.join(os.path.dirname(__file__), '..', 'src'))
@@ -90,3 +95,27 @@ def test_user_login():
         "email": "test@example.com",
         "password": "SecurePass123!",
     }
+
+
+# Import User model for sample_user fixture
+from models.user import User
+from app.core.auth import get_password_hash # Import get_password_hash
+
+@pytest.fixture(scope="function")
+async def sample_user(db_session: AsyncSession) -> User:
+    """Create a sample user for testing purposes."""
+    # Use a consistent test password
+    test_password = "SecureTestPassword123!"
+    hashed_test_password = get_password_hash(test_password)
+
+    user = User(
+        username="testuser",
+        email="test@example.com",
+        hashed_password=hashed_test_password,
+        role="user",
+        is_active=True,
+    )
+    db_session.add(user)
+    await db_session.commit()
+    await db_session.refresh(user)
+    return user

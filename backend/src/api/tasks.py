@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, func
 
 from models.database import get_db
-from src.models import User, Task, Category
+from models import User, Task, Category
 from schemas.task import TaskCreate, TaskUpdate, TaskResponse, TaskToggle, TaskPriority
 from schemas.category import CategoryCreate, CategoryResponse, CategoryUpdate
 from api.deps import get_current_user

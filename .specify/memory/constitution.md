@@ -1,73 +1,55 @@
-<!-- SYNC IMPACT REPORT
-Version change: N/A (initial creation) → v1.0.0
-Modified principles: N/A (new principles created)
-Added sections: Core Principles (6), Technology Constraints, Development Workflow, Governance
-Removed sections: N/A
-Templates requiring updates: 
-- .specify/templates/plan-template.md ✅ updated
-- .specify/templates/spec-template.md ✅ updated  
-- .specify/templates/tasks-template.md ✅ updated
-- .specify/commands/*.toml ✅ reviewed
-- README.md ⚠ pending
-Follow-up TODOs: None
--->
-
-# Evolution of Todo Constitution
+# [PROJECT_NAME] Constitution
+<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
 
 ## Core Principles
 
-### I. Spec-Driven Development (NON-NEGOTIABLE)
-All development must follow the strict sequence: Constitution → Specifications → Plan → Tasks → Implementation. No agent may write code without approved specifications and tasks. Every feature, change, and enhancement must originate from an approved specification document.
+### [PRINCIPLE_1_NAME]
+<!-- Example: I. Library-First -->
+[PRINCIPLE_1_DESCRIPTION]
+<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
 
-### II. Agent Behavior Rules
-Agents must operate within defined constraints: No manual coding by humans, no feature invention beyond approved specifications, no deviation from approved specifications, and all refinements must occur at the specification level, not during code implementation.
+### [PRINCIPLE_2_NAME]
+<!-- Example: II. CLI Interface -->
+[PRINCIPLE_2_DESCRIPTION]
+<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
 
-### III. Phase Governance
-Each project phase is strictly scoped by its specification. Features from future phases must never leak into earlier phases. Architecture may evolve only through updated specifications and plans, maintaining clear boundaries between phases.
+### [PRINCIPLE_3_NAME]
+<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
+[PRINCIPLE_3_DESCRIPTION]
+<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
 
-### IV. Technology Stack Compliance
-All development must adhere to the approved technology stack: Python for backend services, Next.js for frontend in later phases, FastAPI for API frameworks, SQLModel for database interactions, Neon DB for data storage, OpenAI Agents SDK and MCP for agent communication, and Docker, Kubernetes, Kafka, and Dapr for infrastructure in later phases.
+### [PRINCIPLE_4_NAME]
+<!-- Example: IV. Integration Testing -->
+[PRINCIPLE_4_DESCRIPTION]
+<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
 
-### V. Quality and Architecture Standards
-All code must follow clean architecture principles with stateless services where required, clear separation of concerns, and cloud-native readiness. Code must be maintainable, testable, and scalable according to established architectural patterns.
+### [PRINCIPLE_5_NAME]
+<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
+[PRINCIPLE_5_DESCRIPTION]
+<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
 
-### VI. Specification Integrity
-Specifications are the authoritative source of truth for all development activities. Any changes to requirements must be reflected in updated specifications before implementation begins. Code implementation must strictly adhere to the approved specifications without deviation.
+### [PRINCIPLE_6_NAME]
 
-## Technology Constraints
 
-The following technologies are approved for use in the Evolution of Todo project:
+[PRINCIPLE__DESCRIPTION]
 
-- Backend: Python with FastAPI framework
-- Database: SQLModel with Neon DB
-- Frontend: Next.js (introduced in later phases)
-- Infrastructure: Docker, Kubernetes, Kafka, Dapr (introduced in later phases)
-- Agent Framework: OpenAI Agents SDK with MCP
-- Testing: pytest for backend, appropriate frontend testing frameworks
-- Deployment: Containerized deployment with orchestration tools
+## [SECTION_2_NAME]
+<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
 
-All technology choices must align with these approved technologies unless explicitly updated through the specification process.
+[SECTION_2_CONTENT]
+<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
 
-## Development Workflow
+## [SECTION_3_NAME]
+<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
 
-The development workflow must strictly follow these steps:
-
-1. Specification creation and approval
-2. Technical planning and architecture design
-3. Task breakdown with acceptance criteria
-4. Implementation following approved specifications
-5. Testing and quality assurance
-6. Review and approval process
-7. Integration and deployment
-
-No step may be skipped or performed out of sequence. Each phase must be completed and approved before proceeding to the next.
+[SECTION_3_CONTENT]
+<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
 
 ## Governance
+<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-This constitution serves as the supreme governing document for all agents and processes in the Evolution of Todo project. All activities must comply with these principles and requirements.
+[GOVERNANCE_RULES]
+<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
 
-Amendments to this constitution require formal approval through the specification process. Any changes to the constitution must be documented, reviewed, and approved before implementation.
-
-All agents working on this project must verify compliance with these principles during all development activities. Non-compliance must be reported and addressed immediately.
-
-**Version**: v1.0.0 | **Ratified**: 2025-01-01 | **Last Amended**: 2025-01-01
+**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
+<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->

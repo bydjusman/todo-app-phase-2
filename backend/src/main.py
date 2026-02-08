@@ -2,7 +2,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import logging
-import src.models as models # Taake server start hote hi models register ho jayein
+import models as models # Taake server start hote hi models register ho jayein
 
 from config import settings
 from models.database import async_engine
@@ -12,7 +12,7 @@ from api.auth import router as auth_router
 from api.tasks import router as tasks_router
 # Agar categories_router api folder ke andar kisi file mein hai (e.g. categories.py):
 #from api.categories import router as categories_router
-from src.api.tasks import router as categories_router
+from api.tasks import router as categories_router
 
 from api.exceptions import setup_exception_handlers
 

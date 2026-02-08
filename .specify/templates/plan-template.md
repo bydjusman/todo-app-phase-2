@@ -31,12 +31,7 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-This plan must comply with the Evolution of Todo Constitution which mandates:
-- Spec-Driven Development: All work follows Constitution → Specifications → Plan → Tasks → Implementation
-- Agent Behavior Rules: No manual coding by humans, no feature invention beyond specs
-- Phase Governance: Strict adherence to phase specifications without cross-phase feature leakage
-- Technology Stack Compliance: Python, FastAPI, SQLModel, Neon DB, Next.js, OpenAI Agents SDK, MCP
-- Quality and Architecture Standards: Clean architecture, stateless services, separation of concerns
+[Gates determined based on constitution file]
 
 ## Project Structure
 

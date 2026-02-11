@@ -1,4 +1,4 @@
-import { Todo, TodoCreate, TodoUpdate, TodoListResponse } from '../types/todo';
+import { Todo, TodoCreate, TodoUpdate } from '../types/todo';
 
 const API_BASE_URL = process.env.NODE_ENV === 'production'
   ? '/api' // Use Next.js API routes in production
@@ -57,11 +57,13 @@ class ApiClient {
   }
 
   // Todo API methods
-  async getTodos(limit: number = 50, offset: number = 0, completed?: boolean): Promise<TodoListResponse> {
+  async getTodos(limit: number = 50, offset: number = 0, completed?: boolean): Promise<Todo[]> {
     let url = `/todos?limit=${limit}&offset=${offset}`;
     if (completed !== undefined) {
       url += `&completed=${completed}`;
     }
+    // Backend currently returns a plain list of todos (Todo[]),
+    // not a wrapped object, so we return the array directly.
     return this.request(url);
   }
 

@@ -35,8 +35,8 @@ export default function DashboardPage() {
         completedFilter = true;
       }
 
-      const response = await apiClient.getTodos(50, 0, completedFilter);
-      setTodos(response.todos);
+      const todos = await apiClient.getTodos(50, 0, completedFilter);
+      setTodos(todos);
     } catch (err) {
       if (err instanceof Error && err.message.includes('401')) {
         // If unauthorized, redirect to login

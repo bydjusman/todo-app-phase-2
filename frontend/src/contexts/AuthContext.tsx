@@ -1,5 +1,6 @@
 'use client';
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+// Use environment-safe backend base URL - consistent with other API routes
+const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
 
 

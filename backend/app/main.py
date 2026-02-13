@@ -28,10 +28,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include API routers under /api prefix
-app.include_router(health_router, prefix="/api")
-app.include_router(auth_router, prefix="/api")
-app.include_router(todos_router)
+# Include API routers under /api/v1 prefix
+app.include_router(health_router, prefix="/api/v1")
+app.include_router(auth_router, prefix="/api/v1")
+app.include_router(todos_router, prefix="/api/v1")
 
 # Create database tables on startup
 @app.on_event("startup")

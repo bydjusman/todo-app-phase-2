@@ -1,6 +1,6 @@
 'use client';
-// Use environment-safe backend base URL - consistent with other API routes
-const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+// Use relative paths to go through Next.js API routes (proxy)
+const API_URL = '';
 
 
 
@@ -64,7 +64,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const fetchUserDetails = async (token: string) => {
     try {
-     const response = await fetch(`${API_URL}/api/auth/me`, {
+     const response = await fetch('/api/auth/me', {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
@@ -100,7 +100,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const login = async (username: string, password: string) => {
     setLoading(true);
     try {
-     const response = await fetch(`${API_URL}/api/auth/login`, {
+     const response = await fetch('/api/auth/login', {
 
         method: 'POST',
         headers: {
@@ -155,7 +155,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const register = async (username: string, email: string, password: string, confirmPassword: string) => {
     setLoading(true);
     try {
-      const response = await fetch(`${API_URL}/api/auth/register`, {
+      const response = await fetch('/api/auth/register', {
 
         method: 'POST',
         headers: {

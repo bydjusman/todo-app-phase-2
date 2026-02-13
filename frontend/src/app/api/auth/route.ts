@@ -8,10 +8,12 @@ export async function GET(request: NextRequest) {
     // e.g., /api/auth/me
     const pathname = url.pathname;
 
-    // Construct backend URL - ensure it includes /api prefix
+    // Construct backend URL - ensure it includes /api/v1 prefix
     const baseUrl = process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000';
     // Remove trailing slash if present, then append pathname (which already includes /api/auth)
-    const backendUrl = `${baseUrl.replace(/\/$/, '')}${pathname}`;
+    // Replace /api/auth with /api/v1/auth to match backend API structure
+    const backendPath = pathname.replace('/api/auth', '/api/v1/auth');
+    const backendUrl = `${baseUrl.replace(/\/$/, '')}${backendPath}`;
 
     const response = await fetch(backendUrl, {
       headers: {
@@ -43,10 +45,12 @@ export async function POST(request: NextRequest) {
     const url = new URL(request.url);
     const pathname = url.pathname; // e.g., /api/auth/some-endpoint
 
-    // Construct backend URL - ensure it includes /api prefix
+    // Construct backend URL - ensure it includes /api/v1 prefix
     const baseUrl = process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000';
     // Remove trailing slash if present, then append pathname (which already includes /api/auth)
-    const backendUrl = `${baseUrl.replace(/\/$/, '')}${pathname}`;
+    // Replace /api/auth with /api/v1/auth to match backend API structure
+    const backendPath = pathname.replace('/api/auth', '/api/v1/auth');
+    const backendUrl = `${baseUrl.replace(/\/$/, '')}${backendPath}`;
 
     // Try to parse body as JSON, but handle errors gracefully
     let body;
@@ -92,7 +96,12 @@ export async function PUT(request: NextRequest) {
     const pathname = url.pathname; // e.g., /api/auth/some-endpoint
     const body = await request.json();
 
-    const backendUrl = `${process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'}${pathname}`;
+    // Construct backend URL - ensure it includes /api/v1 prefix
+    const baseUrl = process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000';
+    // Remove trailing slash if present, then append pathname (which already includes /api/auth)
+    // Replace /api/auth with /api/v1/auth to match backend API structure
+    const backendPath = pathname.replace('/api/auth', '/api/v1/auth');
+    const backendUrl = `${baseUrl.replace(/\/$/, '')}${backendPath}`;
 
     const response = await fetch(backendUrl, {
       method: 'PUT',
@@ -124,7 +133,12 @@ export async function DELETE(request: NextRequest) {
     const url = new URL(request.url);
     const pathname = url.pathname; // e.g., /api/auth/some-endpoint
 
-    const backendUrl = `${process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'}${pathname}`;
+    // Construct backend URL - ensure it includes /api/v1 prefix
+    const baseUrl = process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000';
+    // Remove trailing slash if present, then append pathname (which already includes /api/auth)
+    // Replace /api/auth with /api/v1/auth to match backend API structure
+    const backendPath = pathname.replace('/api/auth', '/api/v1/auth');
+    const backendUrl = `${baseUrl.replace(/\/$/, '')}${backendPath}`;
 
     const response = await fetch(backendUrl, {
       method: 'DELETE',

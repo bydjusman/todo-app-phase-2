@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@fontsource/inter": "^5.2.8"
+    "@fontsource/inter": "^5.2.8",
+    "better-auth": "^1.4.18"
   }
 }

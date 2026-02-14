@@ -95,6 +95,21 @@ For development, both applications should be running simultaneously:
 - Backend on `http://localhost:8000`
 - Frontend on `http://localhost:3000`
 
-The frontend expects the backend API to be available at `/api` relative to the frontend URL, which is configured in the `.env.local` file. 
-"# todo-app-phase-2" 
-"# todo-app-phase-2" 
+The frontend expects the backend API to be available at `/api` relative to the frontend URL, which is configured in the `.env.local` file.
+
+## Deployment
+
+### Backend Deployment
+
+Deploy the backend to your preferred platform (Hugging Face Spaces, Vercel, etc.).
+
+### Frontend Deployment
+
+Deploy the frontend to Vercel with these settings:
+- Root Directory: `frontend`
+- Environment Variables:
+  - `BACKEND_API_URL`: URL of your deployed backend
+
+The frontend uses Next.js API routes as a proxy to communicate with the backend.
+"# todo-app-phase-2"
+"# todo-app-phase-2"

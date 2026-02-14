@@ -1,29 +1,26 @@
-# Todo Frontend
+# Todo App - Frontend
 
-This is the frontend for the Evolution of Todo - Phase II project, built with Next.js.
+## Deployment Instructions
 
-## Features
+### For Vercel Deployment
 
-- Todo list management interface
-- Create, read, update, and delete todos
-- Filtering by completion status
-- Responsive design
+1. When connecting your project to Vercel, set the **Root Directory** to `frontend`
+2. This ensures Vercel recognizes the Next.js project in the frontend directory
 
-## Setup
+### Environment Variables
 
-1. Install dependencies:
-```bash
-npm install
-```
+Set these environment variables in your Vercel project:
 
-2. Set up environment variables in `.env.local`:
-```bash
-NEXT_PUBLIC_API_BASE_URL=http://localhost:8000/api
-```
+- `BACKEND_API_URL`: The URL of your deployed backend (e.g., `https://your-backend.hf.space`)
 
-3. Run the development server:
-```bash
-npm run dev
-```
+### Important Notes
 
-The application will be available at `http://localhost:3000`.
+- The frontend uses Next.js API routes as a proxy to communicate with the backend
+- All API calls from the frontend go through `/api/*` routes which proxy to the backend
+- The `BACKEND_API_URL` environment variable determines where the proxy routes forward requests
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm start` - Start production server

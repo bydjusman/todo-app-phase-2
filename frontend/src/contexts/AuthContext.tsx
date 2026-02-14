@@ -1,9 +1,4 @@
 'use client';
-// Use relative paths to go through Next.js API routes (proxy)
-const API_URL = '';
-
-
-
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 

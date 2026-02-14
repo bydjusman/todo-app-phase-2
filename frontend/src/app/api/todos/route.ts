@@ -7,7 +7,7 @@ export async function GET(request: NextRequest) {
     const offset = searchParams.get('offset') || '0';
     const completed = searchParams.get('completed');
 
-    let backendUrl = `${process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'}/api/v1/todos?limit=${limit}&offset=${offset}`;
+    let backendUrl = `${process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'}/api/v1/todos?limit=${limit}&offset=${offset}`;
 
     if (completed !== null && completed !== undefined) {
       backendUrl += `&completed=${completed}`;
@@ -41,7 +41,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const backendUrl = `${process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'}/api/v1/todos`;
+    const backendUrl = `${process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'}/api/v1/todos`;
 
     const response = await fetch(backendUrl, {
       method: 'POST',

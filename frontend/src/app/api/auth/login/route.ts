@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Construct backend URL - ensure it includes /api/v1 prefix
-    const baseUrl = process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000';
+    const baseUrl = process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000';
     // Remove trailing slash if present, then add /api/v1/auth/login
     const backendUrl = `${baseUrl.replace(/\/$/, '')}/api/v1/auth/login`;
 

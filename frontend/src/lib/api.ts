@@ -1,8 +1,8 @@
 import { Todo, TodoCreate, TodoUpdate } from '../types/todo';
 
-const API_BASE_URL = process.env.NODE_ENV === 'production'
-  ? '/api' // Use Next.js API routes in production (proxy handles /api/v1 mapping)
-  : (process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'); // Fallback for dev
+const API_BASE_URL = (process.env.NODE_ENV === 'production' && !process.env.NEXT_PUBLIC_API_URL)
+  ? '/api' // Use Next.js API routes in production (proxy handles /api/v1 mapping) when no explicit URL is set
+  : (process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'); // Fallback for dev and explicit URLs
 
 class ApiClient {
   private baseUrl: string;

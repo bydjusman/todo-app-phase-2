@@ -6,7 +6,7 @@ export async function GET(request: NextRequest) {
     const url = new URL(request.url);
     const pathname = url.pathname.replace('/api/', ''); // Extract the path after /api/
 
-    const backendUrl = `${process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'}/api/v1/${pathname}${url.search}`;
+    const backendUrl = `${process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'}/api/v1/${pathname}${url.search}`;
 
     const response = await fetch(backendUrl, {
       headers: {

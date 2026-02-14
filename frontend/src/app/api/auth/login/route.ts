@@ -29,8 +29,10 @@ export async function POST(request: NextRequest) {
 
     // Construct backend URL - ensure it includes /api/v1 prefix
     const baseUrl = process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000';
-    // Remove trailing slash if present, then add /api/v1/auth/login
-    const backendUrl = `${baseUrl.replace(/\/$/, '')}/api/v1/auth/login`;
+    
+    // Ensure the URL doesn't end with a slash before appending the path
+    const baseUrlWithoutTrailingSlash = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
+    const backendUrl = `${baseUrlWithoutTrailingSlash}/api/v1/auth/login`;
 
     console.log('Login request to:', backendUrl);
 

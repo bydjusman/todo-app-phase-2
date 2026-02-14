@@ -6,7 +6,9 @@ export async function GET(request: NextRequest) {
     const url = new URL(request.url);
     const pathname = url.pathname.replace('/api/', ''); // Extract the path after /api/
 
-    const backendUrl = `${process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'}/api/v1/${pathname}${url.search}`;
+    const baseUrl = process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000';
+    const baseUrlWithoutTrailingSlash = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
+    const backendUrl = `${baseUrlWithoutTrailingSlash}/api/v1/${pathname}${url.search}`;
 
     const response = await fetch(backendUrl, {
       headers: {
@@ -39,7 +41,9 @@ export async function POST(request: NextRequest) {
     const pathname = url.pathname.replace('/api/', '');
     const body = await request.json();
 
-    const backendUrl = `${process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'}/api/v1/${pathname}`;
+    const baseUrl = process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000';
+    const baseUrlWithoutTrailingSlash = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
+    const backendUrl = `${baseUrlWithoutTrailingSlash}/api/v1/${pathname}`;
 
     const response = await fetch(backendUrl, {
       method: 'POST',
@@ -74,7 +78,9 @@ export async function PUT(request: NextRequest) {
     const pathname = url.pathname.replace('/api/', '');
     const body = await request.json();
 
-    const backendUrl = `${process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'}/api/v1/${pathname}`;
+    const baseUrl = process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000';
+    const baseUrlWithoutTrailingSlash = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
+    const backendUrl = `${baseUrlWithoutTrailingSlash}/api/v1/${pathname}`;
 
     const response = await fetch(backendUrl, {
       method: 'PUT',
@@ -109,7 +115,9 @@ export async function PATCH(request: NextRequest) {
     const pathname = url.pathname.replace('/api/', '');
     const body = await request.json();
 
-    const backendUrl = `${process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'}/api/v1/${pathname}`;
+    const baseUrl = process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000';
+    const baseUrlWithoutTrailingSlash = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
+    const backendUrl = `${baseUrlWithoutTrailingSlash}/api/v1/${pathname}`;
 
     const response = await fetch(backendUrl, {
       method: 'PATCH',
@@ -143,7 +151,9 @@ export async function DELETE(request: NextRequest) {
     const url = new URL(request.url);
     const pathname = url.pathname.replace('/api/', '');
 
-    const backendUrl = `${process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000'}/api/v1/${pathname}`;
+    const baseUrl = process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000';
+    const baseUrlWithoutTrailingSlash = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
+    const backendUrl = `${baseUrlWithoutTrailingSlash}/api/v1/${pathname}`;
 
     const response = await fetch(backendUrl, {
       method: 'DELETE',
